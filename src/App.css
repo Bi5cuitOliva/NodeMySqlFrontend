@@ -1,38 +1,160 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: '"Playwrite PE", cursive';
+  src: url('../public/fonts/PlaywritePE-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: '"Playwrite PE", cursive';
+  src: url('../public/fonts/PlaywritePE-VariableFont_wght.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+
+.custom-brand {
+    margin-left: 299px; 
   }
+  .navbar {
+  background-color: 	#00A693; 
+  color: white; 
+  font-family: "Playwrite PE", cursive;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar .navbar-brand,
+.navbar .navbar-nav .nav-link {
+  color: white; 
+}
+
+.navbar .navbar-nav .nav-link:hover {
+  color: #050505; 
+}
+
+.navbar-nav > li > .dropdown-menu > .dropdown-item:hover {
+  background-color: #36D7B7; 
+}
+
+.fontt{
+  font-family: "Playwrite PE", cursive;
+}
+
+.btn-custom {
+  background-color: #36D7B7; /* Sets the button background color */
+  border-color: #36D7B7; /* Ensures the border color matches the background */
+  color: white; /* Sets the text color for contrast */
+}
+
+.btn-custom:hover {
+  background-color: #2E9CDB; /* Slightly darker shade for hover effect */
+  border-color: #2E9CDB;
+}
+
+.code {
+  background-color: #36D7B7;
+  border-color: #36D7B7;
+  color: white;
+}
+.code:hover {
+  background-color: #2edb76; 
+  border-color: #2edb76;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 600px;
+  margin-top: 100px;
+  background: #fff;
+  padding-bottom: 30px;
+}
+
+.header{
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 9px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.text{
+  color: #00A693;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.underline{
+  width: 61px;
+  height: 6px;
+  background: #00A693;
+  border-radius: 9px;
+}
+
+.inputs{
+  margin-top: 55px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.input{
+  display: flex;
+  align-items: center;
+  margin: auto;
+  width: 480px;
+  height: 80px;
+  background: #eaeaea;
+  border-radius: 6px;
+}
+
+.input img{
+  margin: 0px 30px;
+}
+ 
+.input input{
+  height: 50px;
+  width: 400px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #797979;
+  font-size: 19px;
+}
+
+.forgot-password{
+  padding-left: 62px;
+  margin-top: 27px;
+  color: #797979;
+  font-size: 18px;
+}
+
+.forgot-password span{
+  color: #00A693;
+  cursor: pointer;
+}
+
+.submit-container{
+  display: flex;
+  gap: 30px;
+  margin: 60px auto;
+}
+
+.submit{
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  width: 220px;
+  height: 59px;
+  color: #fff;
+  background: #00A693;
+  border-radius: 50px;
+  font-size: 19px;
+  font-weight: 700;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.gray{
+  background: #EAEAEA;
+  color: #676767;
 }
