@@ -5,13 +5,13 @@ import { Dropdown } from 'react-bootstrap';
 
 const GetAllStudents = () => {
     const [records, setRecords] = useState([]);
-    // const [loading, setLoading] = useState(false); // Initialize loading state
+     const [loading, setLoading] = useState(false); // Initialize loading state
     // const [unauthorized, setUnauthorized] = useState(false); // Initialize unauthorized state
 
     useEffect(() => {
          const token = sessionStorage.getItem("accessToken");
 
-        // setLoading(true);
+         setLoading(true);
 
         axios.get('http://localhost:5000/api/Student/getAllStudents', {
             headers: {
@@ -20,27 +20,35 @@ const GetAllStudents = () => {
             },
         })
         .then(res => {
+            console.log(res.data); 
             setRecords(res.data);
+            setLoading(false); // Set loading to false once data is received
         })
          .catch(err => {
             console.log(err.message);
+            setLoading(false);
         //     if (err.response && err.response.status === 403) {
         //         setUnauthorized(true);
         //     }
-         })
+         });
         // .finally(() => {
-        //     setLoading(false);
+            
         // });
     }, []);
 
     return (
         <div className='table-responsive mx-5 fontt'>
+              {loading ? (
+            <p>Loading...</p> // Show a loading message or spinner
+        ) : (
             <table className="table table-hover" size="sm">
                 <thead>
                     <tr>
                         <th>Firstname</th>
                         <th>Lastname</th>
                         <th>Gender</th>
+                        <th>CourseID</th>
+                        <th>CourseName</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,7 +57,10 @@ const GetAllStudents = () => {
                             <td>{r.firstname}</td>
                             <td>{r.lastname}</td>
                             <td>{r.gender}</td>
+                            <td>{r.CourseId ? r.CourseId : 'N/A'}</td>
+                            <td>{r.course ? r.course.course_name : 'N/A'}</td>
                             <td>
+                                
                              <Dropdown>
                                 <Dropdown.Toggle variant="success" id="dropdown-basic" size="sm">
                                     Perform Actions
@@ -69,7 +80,7 @@ const GetAllStudents = () => {
                 }
                 </tbody>
             </table>
-
+            )}
         </div>
     );
        

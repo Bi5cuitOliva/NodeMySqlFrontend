@@ -1,35 +1,91 @@
-import React, { useState } from 'react';
+// src/components/Homepage.js
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import email_icon from '../Assets/email.png'
-import password_icon from '../Assets/password.png'
 
-const HomePage = () => {
+const Homepage = (props) => {
+  const { loggedIn, email } = props;
+  const navigate = useNavigate();
 
-const [action,setAction] = useState("Sign Up");
+  const onButtonClick = () => {
+    navigate('/login');
+  };
+  const onClick = () => {
+    navigate('/register');
+  };
 
-    return (
-     <div className='container fontt'>
-      <div className='header'>
-        <div className='text'>{action}</div>
-        <div className='underline'></div>
+  return (
+    <div
+      className='mainContainer'
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+        backgroundColor: '#e9ebee',
+      }}
+    >
+      <div className={'titleContainer'} style={{ marginBottom: '20px' }}>
+        <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#333' }}>
+          Stokeley
+        </h1>
       </div>
-      <div className='inputs'>
-      <div className='input'>
-        <img src={email_icon} alt=''/>
-        <input type='email' placeholder='Email Id' />
+      <p
+        style={{
+          fontSize: '1.2rem',
+          maxWidth: '600px',
+          textAlign: 'center',
+          marginBottom: '20px',
+          color: '#666',
+        }}
+      >
+        Discover the world of technology development.
+      </p>
+      <div
+        className={'buttonContainer'}
+        style={{ display: 'flex', gap: '10px', marginTop: '20px' }}
+      >
+        <button
+          className={'inputButton'}
+          onClick={onButtonClick}
+          style={{
+            padding: '10px 20px',
+            backgroundColor: '#3b92ef',
+            color: 'white',
+            borderRadius: '5px',
+            border: 'none',
+            cursor: 'pointer',
+            flexGrow: 1,
+            margin: '0 5px',
+          }}
+        >
+          {loggedIn ? 'Log out' : 'Log in'}
+        </button>
+        <button
+          className={'inputButton'}
+          onClick={onClick}
+          style={{
+            padding: '10px 20px',
+            backgroundColor: '#00A693',
+            color: 'white',
+            borderRadius: '5px',
+            border: 'none',
+            cursor: 'pointer',
+            flexGrow: 1,
+            margin: '0 5px',
+          }}
+        >
+          Register
+        </button>
       </div>
-      <div className='input'>
-        <img src={password_icon} alt=''/>
-        <input type='password' placeholder='Password'/>
-      </div>
-      </div>
-      {action==="Sign Up"?<div></div>:<div className='forgot-password'>Forgot password? <span>Click Here!</span> </div>}
-      <div className='submit-container'>
-        <div className={action==="Login"?"submit gray":"submit"} onClick={()=>{setAction("Sign Up")}}>Sign Up</div>
-        <div className={action==="Sign Up"?"submit gray":"submit"}onClick={()=>{setAction("Login")}}>Login</div>
-      </div>
-     </div>
-    );
+      {loggedIn && (
+        <p style={{ fontSize: '1rem', marginTop: '10px' }}>
+          Your email address is {email}
+        </p>
+      )}
+    </div>
+  );
 };
-  
-export default HomePage;
+
+export default Homepage;

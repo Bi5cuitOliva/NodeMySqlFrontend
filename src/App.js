@@ -12,6 +12,16 @@ import GetAllStudents from './components/GetAllStudents';
 import UpdateStudent from './components/updateStudent';
 import DeleteStudent from './components/deleteStudent';
 function App() {
+  const handleLogin = (data) => {
+    console.log('Login successful', data);
+  }
+  const handleRegister = (data) => {
+    console.log('Registration successful', data);
+  }
+
+
+
+
   return (
     <Router>
     <Navbar />
@@ -19,11 +29,11 @@ function App() {
       <Route path="/" element={<HomePage />} />
       {/* <Route path="/add-student" element={<RegisterStudent />} />
       <Route path="/view-students" element={<LoginStudent />} /> */}
-      <Route path="/register" element={<RegisterUser />} />
-      <Route path="/login" element={<LoginUser />} />
+      <Route path="/register" element={<RegisterUser onRegister={handleRegister}/>} />
+      <Route path="/login" element={<LoginUser onLogin={handleLogin} />} />
       <Route path="/add-student" element={<AddStudent/>} />
       <Route path="/view-students" element={<GetAllStudents/>} />
-      <Route path="/updateStudent/:_id" element={<UpdateStudent/>}/>
+      <Route path="/updateStudent/:student_id" element={<UpdateStudent/>}/>
       <Route path="/deleteStudent/:student_id" element={<DeleteStudent/>}/>
     </Routes>
   </Router>
